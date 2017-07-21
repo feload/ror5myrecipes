@@ -2,12 +2,20 @@
   float: left;
   font-size: 1.7em;
   color: #fff;
-  text-transform: uppercase;
   letter-spacing: -1px;
-  font-weight: bold;
   
   &:hover{
     color: #efefef;
     text-decoration: none;
+  }
+}
+
+.navigation{
+  .navbar-default{
+    border-radius: 0px;
+    
+    .navbar-nav > li > a {
+      color: white;
+    } 
   }
 }
