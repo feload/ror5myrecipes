@@ -3,11 +3,17 @@ require 'test_helper'
 class RecipeTest < ActionDispatch::IntegrationTest
   
   def setup
-    @recipe = Recipe.new(name: "Salad", description: "Super tasty salad")
+    @chef = Chef.create!(name: "Emiliana", email: "emiliana@hellkitchen.com")
+    @recipe = Recipe.new(name: "Salad", description: "Super tasty salad", chef_id: @chef.id)
   end
   
   test "Recipe should be valid" do
-    assert @recipe.valid?
+    assert @recipe.valid?, @recipe.errors.full_messages
+  end
+  
+  test "Recipe without chef should be invalid" do
+    @recipe.chef_id = nil
+    assert_not @recipe.valid?
   end
   
   test "Name should be present" do
