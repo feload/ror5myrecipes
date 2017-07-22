@@ -5,4 +5,8 @@
   <%= simple_format(@recipe.description) %>
   <hr>
   <small>Created <%= time_ago_in_words(@recipe.created_at) %> ago by <%= @recipe.chef.name %></small>
+  <p>
+    <%= link_to "Edit", edit_recipe_path(@recipe), class: "btn btn-lg btn-success" %>
+    <%= link_to "Delete", recipe_path(@recipe), method: :delete, data: { :confirm => "Are you sure?" }, class: "btn btn-danger" %>
+  </p>
 </div>

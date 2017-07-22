@@ -28,5 +28,31 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_match @recipe.name, response.body
     assert_match @recipe.description, response.body
     assert_match @chef.name, response.body
+    assert_select 'a[href=?]', edit_recipe_path(@recipe), text: "Edit"
+    assert_select 'a[href=?]', recipe_path(@recipe), text: "Delete"
   end
+  
+  test "create new valid recipe" do
+    get new_recipe_path
+    recipe_name =  "This is a new recipe!"
+    recipe_description = "Supeer duuper recipe for testing"
+    assert_template 'recipes/new'
+    assert_difference 'Recipe.count' do
+      post recipes_path, params: { recipe: { name: recipe_name, description: recipe_description } }
+    end
+    follow_redirect!  # This one is required when using "redirect_to" method.
+    assert_match recipe_name, response.body
+    assert_match recipe_description, response.body
+  end
+  
+  test "reject invalid recipe submission" do
+    get new_recipe_path
+    assert_template 'recipes/new'
+    assert_no_difference 'Recipe.count' do
+      post recipes_path, params: { recipe: { name: "", description: "" } }
+    end
+    assert_template 'recipes/new'
+    assert_select 'div.alert.alert-danger'
+  end
+  
 end
