@@ -2,7 +2,7 @@
 <div class="well col-md-8">
   <%= gravatar_for(@recipe.chef) %>
   <h4>Description:</h4>
-  <%= @recipe.description %>
+  <%= simple_format(@recipe.description) %>
   <hr>
   <small>Created <%= time_ago_in_words(@recipe.created_at) %> ago by <%= @recipe.chef.name %></small>
 </div>
