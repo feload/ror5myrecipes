@@ -1,13 +1,4 @@
-<% if @recipe.errors.any? %>
-  <div class="alert alert-danger">
-    <ul>
-      <% @recipe.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
+<%= render 'shared/errors', item: @recipe %>
 <div class="row">
   <div class="col-md-12">
     <%= form_for(@recipe, :html => { class: "form-horizontal", role: "form" }) do |form| %>
