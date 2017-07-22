@@ -1,5 +1,6 @@
 <% if flash.any? %>
   <div class="alert alert-info">
+    <a href="#" class="close" data-dismiss="alert">&#215;</a>
     <ul>
     <% flash.each do |key, message| %>
       <li><%= message %></li>
