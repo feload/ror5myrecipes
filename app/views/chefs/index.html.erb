@@ -1,0 +1,10 @@
+<%= render "shared/page_title", title: "All our chefs!" %>
+<hr>
+<% @chefs.each do |chef| %>
+  <div class="row">
+    <div class="col-md-12 well recipe">
+      <h4><%= link_to chef.name, chef_path(chef) %></h4>
+      <p><%= chef.email %></p>
+    </div>
+  </div>
+<% end %>

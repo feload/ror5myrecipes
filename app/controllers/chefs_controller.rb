@@ -1,7 +1,27 @@
 class ChefsController < ApplicationController
   
+  before_action :get_chef, only: [:show, :edit, :update]
+  
   def new
     @chef = Chef.new
+  end
+  
+  def index
+    @chefs = Chef.all
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @chef.update(get_params)
+      redirect_to chef_path(@chef)
+    else
+      render 'edit'
+    end
+  end
+  
+  def show
   end
   
   def create
@@ -20,6 +40,10 @@ class ChefsController < ApplicationController
   end
   
   private
+  
+  def get_chef
+    @chef = Chef.find(params[:id])
+  end
   
   def get_params
     params.require(:chef).permit(:name, :email, :password, :password_confirmation)
