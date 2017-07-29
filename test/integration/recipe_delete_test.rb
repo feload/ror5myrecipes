@@ -3,7 +3,7 @@ require 'test_helper'
 class RecipeDeleteTest < ActionDispatch::IntegrationTest
 
   def setup
-    @chef = Chef.create!(name: "Panzonni", email: "panzo@italiano.com")
+    @chef = Chef.create!(name: "Panzonni", email: "panzo@italiano.com", password: "123", password_confirmation: "123")
     @recipe = Recipe.create(name: "Wonderful pasta", description: "Wonderful pasta with a lot of sauce", chef: @chef)
   end
   
