@@ -1,5 +1,6 @@
 class ChefsController < ApplicationController
   
+  before_action :require_logged_in
   before_action :get_chef, only: [:show, :edit, :update]
   
   def new

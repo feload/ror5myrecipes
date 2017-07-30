@@ -5,6 +5,8 @@
     <div class="col-md-12 well recipe">
       <h4><%= link_to chef.name, chef_path(chef) %></h4>
       <p><%= chef.email %></p>
+      <p><%= chef.recipes.count %> recipes.</p>
+      <%= link_to "Delete chef", chef_path(chef), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   </div>
 <% end %>

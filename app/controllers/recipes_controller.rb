@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
   
+  before_action :require_logged_in
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
   
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.paginate(page: params[:page], per_page: 3)
   end 
   
   def show

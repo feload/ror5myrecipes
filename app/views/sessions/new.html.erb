@@ -1,0 +1,14 @@
+<h4>Login</h4>
+<%= form_for :session  do |form| %>
+  <p>
+    <%= label_tag :email, "Email: " %> 
+    <%= form.text_field :email %>
+  </p>
+  <p>
+    <%= label_tag :password, "Password: " %>
+    <%= form.password_field :password %>
+  </p>
+  <p>
+    <%= submit_tag "Login" %>
+  </p>
+<% end %>

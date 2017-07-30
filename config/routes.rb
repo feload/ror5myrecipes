@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   
   get 'pages/home',       to: 'pages#home'
   
-  resources :recipes
+  get 'login',            to: 'sessions#new'
+  post 'login',           to: 'sessions#create'
+  get 'logout',           to: 'sessions#destroy'
   
+  resources :recipes
   resources :chefs
   
 end
